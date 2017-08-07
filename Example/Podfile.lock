@@ -1,0 +1,16 @@
+PODS:
+  - Sorter (0.1.0)
+
+DEPENDENCIES:
+  - Sorter (from `../`)
+
+EXTERNAL SOURCES:
+  Sorter:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Sorter: 05d609e91599059e896e88c1e05edda4a8beeb29
+
+PODFILE CHECKSUM: b13880bfb5f75ec9e3806aaf07a509ba2d931e37
+
+COCOAPODS: 1.2.1

@@ -1,0 +1,6 @@
+use_frameworks!
+target 'Sorter_Tests' do
+  pod 'Sorter', :path => '../'
+  
+  
+end
