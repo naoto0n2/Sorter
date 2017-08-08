@@ -20,9 +20,19 @@ class SorterTests: XCTestCase {
         }
     }
 
-    func testSorter() {
-        let items = self.exampleItems()
-        let expectedItems = [
+    private var exampleItems: [Item] {
+        return [
+            Item(num: 1, text: "c"),
+            Item(num: 2, text: "c"),
+            Item(num: 1, text: "b"),
+            Item(num: 2, text: "b"),
+            Item(num: 1, text: "a"),
+            Item(num: 2, text: "a")
+        ]
+    }
+
+    private var expectedItems: [Item] {
+        return [
             Item(num: 2, text: "a"),
             Item(num: 2, text: "b"),
             Item(num: 2, text: "c"),
@@ -30,6 +40,11 @@ class SorterTests: XCTestCase {
             Item(num: 1, text: "b"),
             Item(num: 1, text: "c")
         ]
+    }
+
+    func testSorter1() {
+        let items = self.exampleItems
+        let expectedItems = self.expectedItems
 
         let sorterForNum = Sorter<Item> { $0.0.num > $0.1.num }
         let sorterForText = Sorter<Item> { $0.0.text < $0.1.text }
@@ -39,14 +54,15 @@ class SorterTests: XCTestCase {
         XCTAssertEqual(result, expectedItems)
     }
 
-    private func exampleItems() -> [Item] {
-        return [
-            Item(num: 1, text: "c"),
-            Item(num: 2, text: "c"),
-            Item(num: 1, text: "b"),
-            Item(num: 2, text: "b"),
-            Item(num: 1, text: "a"),
-            Item(num: 2, text: "a")
-        ]
+    func testSorter2() {
+        let items = self.exampleItems
+        let expectedItems = self.expectedItems
+
+        let sorterForNum = Sorter<Item>(asc: false) { $0.num }
+        let sorterForText = Sorter<Item> { $0.text }
+        let sorter = Sorter([sorterForNum, sorterForText])
+        let result = items.sorted(by: sorter)
+
+        XCTAssertEqual(result, expectedItems)
     }
 }
