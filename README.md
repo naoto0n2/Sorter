@@ -7,27 +7,13 @@
 Sorter with multiple conditions in Swift, such as NSSortDescriptor.
 
 ```swift
-struct Item {
-    let num: Int
-    let text: String
-}
+let items: [Item] = ...
 
-let items = [
-    Item(num: 1, text: "c"),
-    Item(num: 2, text: "c"),
-    Item(num: 1, text: "b"),
-    Item(num: 2, text: "b"),
-    Item(num: 1, text: "a"),
-    Item(num: 2, text: "a")
-]
+// Create Sorter for each attribute
+let sorterForNum = Sorter<Item>(asc: false) { $0.num }
+let sorterForText = Sorter<Item>(asc: true) { $0.text }
 
-// Sorter for num in descending order
-let sorterForNum = Sorter<Item> { $0.0.num > $0.1.num }
-
-// Sorter for text in ascending order
-let sorterForText = Sorter<Item> { $0.0.text < $0.1.text }
-
-// Create sorter with multiple conditions
+// Create Sorter with multiple conditions
 let sorter = Sorter([sorterForNum, sorterForText])
 
 // Get sorted result
@@ -43,6 +29,37 @@ result: [
     Item(num: 1, text: "c")
 ]
 */
+```
+
+## Initializer
+### 1. Initialize Sorter by comparable attribute
+Default order is ascending.
+
+```swift
+Sorter<Item>(asc: false) { $0.num } // Pattern 1
+Sorter<Item>(asc: true) { $0.num } // Pattern 2
+Sorter<Item> { $0.num } // Pattern 3
+```
+
+### 2. Initialize Sorter by descriptor
+
+```swift
+Sorter<Item> { $0.0.text < $0.1.text }
+```
+
+### 3. Initialize Sorter by multiple conditions
+
+```swift
+Sorter([sorter1, sorter2])
+Sorter([sorter1, sorter2, sorter3])
+...
+```
+
+## Sort sequence
+Sort items by sorter
+
+```swift
+let result = items.sort(by: sorter)
 ```
 
 ## Requirements
