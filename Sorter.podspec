@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Sorter'
-  s.version = '0.1.0'
+  s.version = '0.2.0'
   s.summary = 'Sorter with multiple conditions in Swift, such as NSSortDescriptor.'
   s.homepage = 'https://github.com/naoto0n2/Sorter'
   s.author = {
