@@ -44,7 +44,7 @@ Sorter<Item> { $0.num } // Pattern 3
 ### 2. Initialize Sorter by descriptor
 
 ```swift
-Sorter<Item> { $0.0.text < $0.1.text }
+Sorter<Item> { $0.text < $1.text }
 ```
 
 ### 3. Initialize Sorter by multiple conditions
@@ -64,7 +64,7 @@ let result = items.sort(by: sorter)
 
 ## Requirements
 
-- Swift 3.0 or later
+- Swift 4.0 or later
 - iOS 8.0 or later
 
 ## Installation
