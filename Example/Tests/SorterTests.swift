@@ -46,8 +46,8 @@ class SorterTests: XCTestCase {
         let items = self.exampleItems
         let expectedItems = self.expectedItems
 
-        let sorterForNum = Sorter<Item> { $0.0.num > $0.1.num }
-        let sorterForText = Sorter<Item> { $0.0.text < $0.1.text }
+        let sorterForNum = Sorter<Item> { $0.num > $1.num }
+        let sorterForText = Sorter<Item> { $0.text < $1.text }
         let sorter = Sorter([sorterForNum, sorterForText])
         let result = items.sorted(by: sorter)
 

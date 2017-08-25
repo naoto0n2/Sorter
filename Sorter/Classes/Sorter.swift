@@ -33,9 +33,9 @@ public struct Sorter<Value> {
 
     public init<Key: Comparable>(asc: Bool = true, transform: @escaping (Value) -> Key) {
         if asc {
-            self.descriptor = { transform($0.0) < transform($0.1) }
+            self.descriptor = { transform($0) < transform($1) }
         } else {
-            self.descriptor = { transform($0.0) > transform($0.1) }
+            self.descriptor = { transform($0) > transform($1) }
         }
     }
 }

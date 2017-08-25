@@ -10,6 +10,6 @@ import Foundation
 
 public extension Sequence {
     public func sorted(by sorter: Sorter<Iterator.Element>) -> [Iterator.Element] {
-        return self.sorted { sorter.descriptor($0.0, $0.1) }
+        return self.sorted { sorter.descriptor($0, $1) }
     }
 }
